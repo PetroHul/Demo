@@ -1,17 +1,14 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 public class Fruit {
     private String name;
     private String color;
-    private Fruit fruit;
 
     public Fruit() {
     }
@@ -22,17 +19,16 @@ public class Fruit {
     }
 
 
-    public static List<Fruit> getConsoleObject(List<Fruit> fruit){
-        Scanner scanner = new Scanner(System.in);
-        String name =  scanner.nextLine();
-        String color =  scanner.nextLine();
-        fruit.add(new Fruit(name,color));
-        return fruit;
+    public void readWithConsole(Scanner scanner){
+        String name = scanner.nextLine().toLowerCase().trim();
+        String color = scanner.nextLine().toLowerCase().trim();
+        this.setName(name);
+        this.setColor(color);
     }
 
     //print file
     //Добавити ексепшен до методу*
-    public  void print(List<Fruit> fruit){
+    public void print(List<Fruit> fruit){
         for (Fruit f: fruit) {
             System.out.println(f.toString());
         }
@@ -43,7 +39,7 @@ public class Fruit {
         String line;
         while ((line = br.readLine()) != null){
             Fruit fruit = new Fruit();
-            String[] date = line.split(",");
+            String[] date = line.split(";");
             if(date.length == 2) {
                 fruit.name = date[0];
                 fruit.color = date[1];
@@ -60,7 +56,7 @@ public class Fruit {
             return false;
         }
         else {
-            String[] data = line.split(",");
+            String[] data = line.split(";");
             this.setName(data[0]);
             this.setColor(data[1]);
             return true;
@@ -68,24 +64,35 @@ public class Fruit {
         }
     }
 
-    public static List<Fruit> saveFruitFromFile(File file ) throws IOException{
-        File saveFile = new File ("resources\\nextFileSave.txt");
-        List<Fruit> fruits = new ArrayList<Fruit>();
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        List<String> fileList = new ArrayList();
-        String line;
-        while ((line = br.readLine()) != null){
-            Fruit fruit = new Fruit();
-            String[] date = line.split(",");
-            if(date.length == 2) {
-                fruit.name = date[0];
-                fruit.color = date[1];
-                fruits.add(fruit);
-            }
-        }
-        br.close();
-        return fruits;
+    public void saveToFile( BufferedWriter bw) throws IOException{
+        String line = this.name + ";" + this.color + "\n";
+        bw.write(line);
     }
+
+    public static void sortFruitByName(List fruits) {
+        System.out.println("Sorted fruit list");
+        Collections.sort(fruits, new SortFruitsByName());
+    }
+
+
+//    public static List<Fruit> saveFruitFromFile(File file ) throws IOException{
+//        File saveFile = new File ("resources\\saveCitruses.txt");
+//        List<Fruit> fruits = new ArrayList<Fruit>();
+//        BufferedReader br = new BufferedReader(new FileReader(file));
+//        List<String> fileList = new ArrayList();
+//        String line;
+//        while ((line = br.readLine()) != null){
+//            Fruit fruit = new Fruit();
+//            String[] date = line.split(",");
+//            if(date.length == 2) {
+//                fruit.name = date[0];
+//                fruit.color = date[1];
+//                fruits.add(fruit);
+//            }
+//        }
+//        br.close();
+//        return fruits;
+//    }
 
     //print file
 //    public static void print(List<String> fileList){
@@ -114,6 +121,6 @@ public class Fruit {
 
     @Override
     public String toString() {
-        return "[ name= " + name + " color= " + color + "|";
+        return "[ name= " + name + " | " + " color= " + color + " | ";
     }
 }

@@ -1,0 +1,3 @@
+Apple;red;5
+Banan;yellow;7
+Lemon;yellow;9

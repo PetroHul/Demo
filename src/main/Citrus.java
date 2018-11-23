@@ -1,7 +1,9 @@
 package main;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class Citrus extends Fruit {
     private int vitaminC; //gram
@@ -29,7 +31,7 @@ public class Citrus extends Fruit {
 
     @Override
     public String toString() {
-        return super.toString() + "VitaminC =" + vitaminC + "]";
+        return super.toString() + "vitaminC= " + gramToMilligramVC(vitaminC) + "]";
     }
 
     @Override
@@ -40,7 +42,7 @@ public class Citrus extends Fruit {
             return false;
         }
         else {
-            String[] data = line.split(",");
+            String[] data = line.split(";");
            // Citrus citrus = new Citrus();
             this.setName(data[0]);
             this.setColor(data[1]);
@@ -49,4 +51,10 @@ public class Citrus extends Fruit {
 
         }
     }
+    @Override
+    public void saveToFile( BufferedWriter bw) throws IOException{
+        String line = this.getName() + ";" + this.getColor() +";"+ this.vitaminC + "\n";
+        bw.write(line);
+    }
+
 }
