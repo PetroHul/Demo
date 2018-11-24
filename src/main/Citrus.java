@@ -52,7 +52,7 @@ public class Citrus extends Fruit {
         }
     }
     @Override
-    public void saveToFile( BufferedWriter bw) throws IOException{
+    public void saveToFile(BufferedWriter bw) throws IOException{
         String line = this.getName() + ";" + this.getColor() +";"+ this.vitaminC + "\n";
         bw.write(line);
     }

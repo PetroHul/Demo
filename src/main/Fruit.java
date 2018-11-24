@@ -1,5 +1,7 @@
 package main;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -64,7 +66,7 @@ public class Fruit {
         }
     }
 
-    public void saveToFile( BufferedWriter bw) throws IOException{
+    public void saveToFile(BufferedWriter bw) throws IOException{
         String line = this.name + ";" + this.color + "\n";
         bw.write(line);
     }
@@ -74,6 +76,22 @@ public class Fruit {
         Collections.sort(fruits, new SortFruitsByName());
     }
 
+    public static void saveFruitInXMLFile(List<Fruit> fruits) throws IOException {
+        FileOutputStream fos = new FileOutputStream("resources\\fruits.xml");
+        XMLEncoder encoder = new XMLEncoder(fos);
+        encoder.writeObject(fruits);
+        encoder.close();
+        fos.close();
+    }
+
+    public static List<Fruit> readFruitFromXMLFile() throws IOException {
+        FileInputStream fis = new FileInputStream("resources\\fruits.xml");
+        XMLDecoder decoder = new XMLDecoder(fis);
+        List<Fruit> decodedFtuits = (List<Fruit>) decoder.readObject();
+        decoder.close();
+        fis.close();
+        return decodedFtuits;
+    }
 
 //    public static List<Fruit> saveFruitFromFile(File file ) throws IOException{
 //        File saveFile = new File ("resources\\saveCitruses.txt");

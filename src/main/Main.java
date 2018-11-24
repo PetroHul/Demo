@@ -1,4 +1,5 @@
 package main;
+import java.beans.XMLDecoder;
 import java.io.*;
 import java.util.*;
 
@@ -45,6 +46,13 @@ public class Main {
         }
         bw.close();
 
+        Fruit.saveFruitInXMLFile(fruitList);
+        List<Fruit> fructXML = Fruit.readFruitFromXMLFile();
+        for (Fruit fe: fructXML) {
+            System.out.println(fe);
+        }
+       // System.out.println(Fruit.readFruitFromXMLFile());
+      //  XMLDecoder decoder = new XMLDecoder(new FileInputStream("fruits.xml"));
 //        System.out.println(fruit.getFromFile(br));
 //        System.out.println(fruit);
 
