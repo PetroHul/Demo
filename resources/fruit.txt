@@ -1,0 +1,6 @@
+Banan;yellow
+Apple;red
+Apple;green
+Cherry;red
+Avocado;green
+Apple;yellow

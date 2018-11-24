@@ -4,20 +4,20 @@
   <void method="add">
    <object class="main.Fruit">
     <void property="color">
-     <string>red</string>
+     <string>we</string>
     </void>
     <void property="name">
-     <string>apple</string>
+     <string>qwe</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="main.Fruit">
     <void property="color">
-     <string>green</string>
+     <string>qwe</string>
     </void>
     <void property="name">
-     <string>lime</string>
+     <string>qwe</string>
     </void>
    </object>
   </void>

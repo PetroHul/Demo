@@ -1,3 +1,5 @@
-Apple;red;5
-Banan;yellow;7
 Lemon;yellow;9
+Lime;green;2
+Kabosu;yellow;3
+Grapefruit;orange;5
+Greek citron;yellow;1

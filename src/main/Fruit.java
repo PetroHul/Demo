@@ -20,14 +20,6 @@ public class Fruit {
         this.color = color;
     }
 
-
-    public void readWithConsole(Scanner scanner){
-        String name = scanner.nextLine().toLowerCase().trim();
-        String color = scanner.nextLine().toLowerCase().trim();
-        this.setName(name);
-        this.setColor(color);
-    }
-
     //print file
     //Добавити ексепшен до методу*
     public void print(List<Fruit> fruit){
@@ -58,7 +50,7 @@ public class Fruit {
             return false;
         }
         else {
-            String[] data = line.split(";");
+            String[] data = line.trim().split(";");
             this.setName(data[0]);
             this.setColor(data[1]);
             return true;
@@ -69,11 +61,6 @@ public class Fruit {
     public void saveToFile(BufferedWriter bw) throws IOException{
         String line = this.name + ";" + this.color + "\n";
         bw.write(line);
-    }
-
-    public static void sortFruitByName(List fruits) {
-        System.out.println("Sorted fruit list");
-        Collections.sort(fruits, new SortFruitsByName());
     }
 
     public static void saveFruitInXMLFile(List<Fruit> fruits) throws IOException {
