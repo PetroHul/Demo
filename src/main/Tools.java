@@ -30,11 +30,20 @@ public class Tools {
         return fruitsList;
     }
 
-    public static List sortFruitByName(List fruits) {
-        System.out.println("Sorted fruit list");
+    public static List<Fruit> sortFruitByName(List<Fruit> fruits) {
         Collections.sort(fruits, new SortFruitsByName());
         return fruits;
     }
 
+    public static List<Fruit> getFruitsYellow(List<Fruit> fruitsList) {
+        List<Fruit> newFruitsList = new ArrayList<>();
+
+        for (Fruit fruit : fruitsList) {
+            if (fruit.getColor().equals("Yellow".trim().toLowerCase())) {
+                newFruitsList.add(fruit);
+            }
+        }
+        return newFruitsList;
+    }
 
 }

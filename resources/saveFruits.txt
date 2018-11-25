@@ -1,2 +1,8 @@
-qwe;we
-qwe;qwe
+Apple;red
+Apple;green
+Avocado;green
+Banan;yellow
+Cherry;red
+Kabos;yellow;3
+Lemon;yellow;9
+Lime;green;2

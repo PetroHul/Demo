@@ -3,6 +3,7 @@ package main;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class Citrus extends Fruit {
     private int vitaminC;
@@ -25,7 +26,11 @@ public class Citrus extends Fruit {
 
     @Override
     public String toString() {
-        return String.format("%svitaminC= %s milligramms]", super.toString(), this.vitaminC);
+        return String.format("%svitaminC= %s milligramms |", super.toString(), this.vitaminC);
+    }
+    @Override
+    public String toFormatFile() {
+        return String.format("%s;%s", super.toFormatFile(), vitaminC);
     }
 
     @Override
@@ -43,10 +48,10 @@ public class Citrus extends Fruit {
                 return true;
             }
     }
-    @Override
-    public void saveToFile(BufferedWriter bw) throws IOException{
-        String line = this.getName() + ";" + this.getColor() +";"+ this.vitaminC + "\n";
-        bw.write(line);
-    }
+//    @Override
+//    public void saveToFile(BufferedWriter bw) throws IOException{
+//        String line = this.getName() + ";" + this.getColor() +";"+ this.vitaminC + "\n";
+//        bw.write(line);
+//    }
 
 }

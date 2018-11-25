@@ -1,5 +1,5 @@
 Lemon;yellow;9
 Lime;green;2
-Kabosu;yellow;3
+Kabos;yellow;3
 Grapefruit;orange;5
 Greek citron;yellow;1

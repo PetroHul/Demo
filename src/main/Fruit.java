@@ -22,9 +22,9 @@ public class Fruit {
 
     //print file
     //Добавити ексепшен до методу*
-    public void print(List<Fruit> fruit){
+    public static void print(List<Fruit> fruit){
         for (Fruit f: fruit) {
-            System.out.println(f.toString());
+            System.out.println(f);
         }
     }
     public static List<Fruit> getFruitsFromFile( BufferedReader br) throws IOException{
@@ -43,7 +43,6 @@ public class Fruit {
         return fruits;
     }
 
-
     public boolean getFromFile( BufferedReader br) throws IOException{
         String line;
         if ((line = br.readLine()) == null){
@@ -57,11 +56,22 @@ public class Fruit {
 
         }
     }
-
-    public void saveToFile(BufferedWriter bw) throws IOException{
-        String line = this.name + ";" + this.color + "\n";
-        bw.write(line);
+    public String toFormatFile(){
+        return String.format("%s;%s", name, color);
     }
+
+    //Exception create ablout - incorect format line if at line doesn't use toFormatFile()!
+
+    public static void saveToFileFruit(List<Fruit> fruitsList) throws IOException{
+        String fileSave = "resources\\saveFruits.txt";
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileSave));
+        for (Fruit fruit:fruitsList) {
+            bw.write(fruit.toFormatFile());
+            bw.newLine();
+        }
+        bw.close();
+    }
+
 
     public static void saveFruitInXMLFile(List<Fruit> fruits) throws IOException {
         FileOutputStream fos = new FileOutputStream("resources\\fruits.xml");
@@ -79,6 +89,7 @@ public class Fruit {
         fis.close();
         return decodedFtuits;
     }
+    //??????????????????????????????????????????????????????????????????????????????????????
 
 //    public static List<Fruit> saveFruitFromFile(File file ) throws IOException{
 //        File saveFile = new File ("resources\\saveCitruses.txt");
@@ -126,6 +137,6 @@ public class Fruit {
 
     @Override
     public String toString() {
-        return "[ name= " + name + " | " + " color= " + color + " | ";
+        return String.format("| name= %s |  color= %s | ", name, color);
     }
 }

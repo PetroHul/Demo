@@ -1,4 +1,3 @@
-/*addd вибірку по кольору елов*/
 package main;
 import java.io.*;
 import java.util.*;
@@ -9,6 +8,7 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
+
     public static void main(String[] args) throws IOException {
 //        List<Fruit> fruitList = new ArrayList<Fruit>();
 //        List<Citrus> citrusesList = new ArrayList<Citrus>();
@@ -18,14 +18,14 @@ public class Main {
         int st = 0;
         while (st < 1 || st > 2) {
                 st = scanner.nextInt(); //***************add processing Exception when you input different from int***************
-                if(st !=1 || st !=2)
+                if(st !=1 && st !=2)
                     System.out.println("Incorrect input, please input correct data");
             }
         // what you input?
         if (st == 1) {
-            System.out.println("Input data");
+            System.out.println("Input data from console");
             int i = 0;
-            while (i < 1) {
+            while (i < 2) {
                 fruitsList.addAll(inputFromConsole());
                 i++;
             }
@@ -58,20 +58,23 @@ public class Main {
             br.close();
         }
 
-        /* Print to console instances from fruitsList who has color yellow*/
-        System.out.println("before sort");
-        for (Object obj : fruitsList) {
-            System.out.println(obj);
-        }
-
+        /* Print yellow fruits */
         System.out.println("=".repeat(55) + "\n" + "Fruits who have color yellow");
+        List<Fruit> yellowFuitList = new ArrayList<>();
+        yellowFuitList.addAll(Tools.getFruitsYellow(fruitsList));
+        Fruit.print(yellowFuitList);
+
+        System.out.println("=".repeat(55)); // print line
+
+        /* Add sorted list to file */
         Tools.sortFruitByName(fruitsList);
-        for (Object obj : fruitsList) {
-            System.out.println(obj);
-        }
+        Fruit.print(fruitsList);
+        Fruit.saveToFileFruit(fruitsList);
+
+
+
     }
-
-
+}
 
             /* Console read and add to fruitList + create new object fruit*/
 //
@@ -123,4 +126,4 @@ public class Main {
 //       // fruit.print(fruit.getFruitsFromFile(br));
 //
 //        //cheack github
-}
+
