@@ -1,6 +1,11 @@
 package main;
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static main.Tools.inputFromConsole;
 
@@ -8,20 +13,17 @@ public class Main {
 
     static Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) throws IOException {
-//        List<Fruit> fruitList = new ArrayList<Fruit>();
-//        List<Citrus> citrusesList = new ArrayList<Citrus>();
 
         List<Fruit> fruitsList = new ArrayList<>();
         System.out.println("Choose method input data\nFrom Console [input 1] | From file [input 2]");
         int st = 0;
         while (st < 1 || st > 2) {
-                st = scanner.nextInt(); //***************add processing Exception when you input different from int***************
-                if(st !=1 && st !=2)
-                    System.out.println("Incorrect input, please input correct data");
-            }
-        // what you input?
+            st = scanner.nextInt(); //***************add processing Exception when you input different from int***************
+            if (st != 1 && st != 2)
+                System.out.println("Incorrect input, please input correct data");
+        }
+
         if (st == 1) {
             System.out.println("Input data from console");
             int i = 0;
@@ -62,68 +64,25 @@ public class Main {
         System.out.println("=".repeat(55) + "\n" + "Fruits who have color yellow");
         List<Fruit> yellowFuitList = new ArrayList<>();
         yellowFuitList.addAll(Tools.getFruitsYellow(fruitsList));
-        Fruit.print(yellowFuitList);
+        Tools.print(yellowFuitList);
 
         System.out.println("=".repeat(55)); // print line
 
         /* Add sorted list to file */
         Tools.sortFruitByName(fruitsList);
-        Fruit.print(fruitsList);
+        Tools.print(fruitsList);
         Fruit.saveToFileFruit(fruitsList);
 
+        /*Serelization*/
+        System.out.println("XML Saved to file");
+        Tools.saveFruitInXMLFile(fruitsList);
 
-
+        System.out.println("XML Read from file");
+        List<Fruit> serializationList = new ArrayList<>();
+        serializationList.addAll(Tools.readFruitFromXMLFile());
+        for (Fruit f : serializationList) {
+            System.out.println(f);
+        }
     }
 }
-
-            /* Console read and add to fruitList + create new object fruit*/
-//
-
-//        Citrus.sortFruitByName(citrusesList);
-//        Fruit.sortFruitByName(fruitList);
-//        for (Fruit f: citrusesList ){
-//            System.out.println(f);
-//        }
-//        System.out.println("Read with file");
-//        /* Read with file and add to list citruses and create new instance */
-//        String readFile ="resources\\citruses.txt";
-//        BufferedReader br = new BufferedReader(new FileReader(readFile));
-//        while (citrus.getFromFile(br)) {
-//            citrusesList.add(citrus);
-//            citrus = new Citrus();
-//        }
-//        System.out.println("Read with file");
-//        /* Print at console instances wit citrusesList */
-//        for (Citrus c:citrusesList) {
-//            System.out.println(c);
-//        }
-//        System.out.println("Save into file");
-//        /* Save our object citruses into file saveCitruses.txt*/
-//        Fruit.saveFruitInXMLFile(fruitList);
-//        String writeFile ="resources\\saveFruits.txt";
-//        BufferedWriter bw = new BufferedWriter(new FileWriter(writeFile));
-//        for (Fruit f:fruitList) {
-//            f.saveToFile(bw);
-//        }
-//        bw.close();
-//
-//        System.out.println("XML Save");
-//        Fruit.saveFruitInXMLFile(fruitList);
-//
-//        List<Fruit> fructXML = Fruit.readFruitFromXMLFile();
-//        for (Fruit fe: fructXML) {
-//            System.out.println(fe);
-//        }
-//
-//        System.out.println("XML Read");
-//        System.out.println(Fruit.readFruitFromXMLFile());
-//
-//        //dell
-////        XMLDecoder decoder = new XMLDecoder(new FileInputStream("fruits.xml"));
-////        System.out.println(fruit.getFromFile(br));
-////        System.out.println(fruit);
-//
-//       // fruit.print(fruit.getFruitsFromFile(br));
-//
-//        //cheack github
 

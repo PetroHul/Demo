@@ -1,9 +1,7 @@
 package main;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class Citrus extends Fruit {
     private int vitaminC;
@@ -11,6 +9,22 @@ public class Citrus extends Fruit {
     public Citrus(String name, String color, int vitaminC) {
         super(name, color);
         this.vitaminC = vitaminC;
+    }
+
+    @Override
+    public boolean getFromFile(BufferedReader br) throws IOException {
+        String line;
+        //super.getFromFile(br);
+        if ((line = br.readLine()) == null) {
+            return false;
+        } else {
+            String[] data = line.split(";");
+            // Citrus citrus = new Citrus();
+            this.setName(data[0]);
+            this.setColor(data[1]);
+            this.vitaminC = Integer.parseInt(data[2]);
+            return true;
+        }
     }
 
     public int getVitaminC() {
@@ -28,30 +42,9 @@ public class Citrus extends Fruit {
     public String toString() {
         return String.format("%svitaminC= %s milligramms |", super.toString(), this.vitaminC);
     }
+
     @Override
     public String toFormatFile() {
         return String.format("%s;%s", super.toFormatFile(), vitaminC);
     }
-
-    @Override
-    public boolean getFromFile(BufferedReader br) throws IOException {
-            String line;
-            //super.getFromFile(br);
-            if ((line = br.readLine()) == null) {
-                return false;
-            } else {
-                String[] data = line.split(";");
-                // Citrus citrus = new Citrus();
-                this.setName(data[0]);
-                this.setColor(data[1]);
-                this.vitaminC = Integer.parseInt(data[2]);
-                return true;
-            }
-    }
-//    @Override
-//    public void saveToFile(BufferedWriter bw) throws IOException{
-//        String line = this.getName() + ";" + this.getColor() +";"+ this.vitaminC + "\n";
-//        bw.write(line);
-//    }
-
 }

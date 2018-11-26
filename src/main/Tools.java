@@ -1,5 +1,10 @@
 package main;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +24,7 @@ public class Tools {
             fruit.setColor(arrSt[1]);
             fruitsList.add(fruit);
         } else if (arrSt.length == 3) {
-            Citrus citrus= new Citrus();
+            Citrus citrus = new Citrus();
             citrus.setName(arrSt[0]);
             citrus.setColor(arrSt[1]);
             citrus.setVitaminC(Integer.parseInt(arrSt[2]));
@@ -30,9 +35,11 @@ public class Tools {
         return fruitsList;
     }
 
-    public static List<Fruit> sortFruitByName(List<Fruit> fruits) {
-        Collections.sort(fruits, new SortFruitsByName());
-        return fruits;
+    //Добавити ексепшен до методу*
+    public static void print(List<Fruit> fruit) {
+        for (Fruit f : fruit) {
+            System.out.println(f);
+        }
     }
 
     public static List<Fruit> getFruitsYellow(List<Fruit> fruitsList) {
@@ -44,6 +51,28 @@ public class Tools {
             }
         }
         return newFruitsList;
+    }
+
+    public static List<Fruit> sortFruitByName(List<Fruit> fruits) {
+        Collections.sort(fruits, new SortFruitsByName());
+        return fruits;
+    }
+
+    public static void saveFruitInXMLFile(List<Fruit> fruits) throws IOException {
+        FileOutputStream fos = new FileOutputStream("resources\\fruits.xml");
+        XMLEncoder encoder = new XMLEncoder(fos);
+        encoder.writeObject(fruits);
+        encoder.close();
+        fos.close();
+    }
+
+    public static List<Fruit> readFruitFromXMLFile() throws IOException {
+        FileInputStream fis = new FileInputStream("resources\\fruits.xml");
+        XMLDecoder decoder = new XMLDecoder(fis);
+        List<Fruit> decodedFtuits = (List<Fruit>) decoder.readObject();
+        decoder.close();
+        fis.close();
+        return decodedFtuits;
     }
 
 }

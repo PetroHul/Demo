@@ -4,20 +4,89 @@
   <void method="add">
    <object class="main.Fruit">
     <void property="color">
-     <string>we</string>
+     <string>red</string>
     </void>
     <void property="name">
-     <string>qwe</string>
+     <string>Apple</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="main.Fruit">
     <void property="color">
-     <string>qwe</string>
+     <string>green</string>
     </void>
     <void property="name">
-     <string>qwe</string>
+     <string>Apple</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Fruit">
+    <void property="color">
+     <string>green</string>
+    </void>
+    <void property="name">
+     <string>Avocado</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Fruit">
+    <void property="color">
+     <string>yellow</string>
+    </void>
+    <void property="name">
+     <string>Banan</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Fruit">
+    <void property="color">
+     <string>red</string>
+    </void>
+    <void property="name">
+     <string>Cherry</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Citrus">
+    <void property="color">
+     <string>yellow</string>
+    </void>
+    <void property="name">
+     <string>Kabos</string>
+    </void>
+    <void property="vitaminC">
+     <int>3</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Citrus">
+    <void property="color">
+     <string>yellow</string>
+    </void>
+    <void property="name">
+     <string>Lemon</string>
+    </void>
+    <void property="vitaminC">
+     <int>9</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="main.Citrus">
+    <void property="color">
+     <string>green</string>
+    </void>
+    <void property="name">
+     <string>Lime</string>
+    </void>
+    <void property="vitaminC">
+     <int>2</int>
     </void>
    </object>
   </void>

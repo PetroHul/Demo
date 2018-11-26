@@ -20,13 +20,6 @@ public class Fruit {
         this.color = color;
     }
 
-    //print file
-    //Добавити ексепшен до методу*
-    public static void print(List<Fruit> fruit){
-        for (Fruit f: fruit) {
-            System.out.println(f);
-        }
-    }
     public static List<Fruit> getFruitsFromFile( BufferedReader br) throws IOException{
         List<Fruit> fruits = new ArrayList<Fruit>();
         List<String> fileList = new ArrayList();
@@ -56,6 +49,7 @@ public class Fruit {
 
         }
     }
+
     public String toFormatFile(){
         return String.format("%s;%s", name, color);
     }
@@ -71,53 +65,6 @@ public class Fruit {
         }
         bw.close();
     }
-
-
-    public static void saveFruitInXMLFile(List<Fruit> fruits) throws IOException {
-        FileOutputStream fos = new FileOutputStream("resources\\fruits.xml");
-        XMLEncoder encoder = new XMLEncoder(fos);
-        encoder.writeObject(fruits);
-        encoder.close();
-        fos.close();
-    }
-
-    public static List<Fruit> readFruitFromXMLFile() throws IOException {
-        FileInputStream fis = new FileInputStream("resources\\fruits.xml");
-        XMLDecoder decoder = new XMLDecoder(fis);
-        List<Fruit> decodedFtuits = (List<Fruit>) decoder.readObject();
-        decoder.close();
-        fis.close();
-        return decodedFtuits;
-    }
-    //??????????????????????????????????????????????????????????????????????????????????????
-
-//    public static List<Fruit> saveFruitFromFile(File file ) throws IOException{
-//        File saveFile = new File ("resources\\saveCitruses.txt");
-//        List<Fruit> fruits = new ArrayList<Fruit>();
-//        BufferedReader br = new BufferedReader(new FileReader(file));
-//        List<String> fileList = new ArrayList();
-//        String line;
-//        while ((line = br.readLine()) != null){
-//            Fruit fruit = new Fruit();
-//            String[] date = line.split(",");
-//            if(date.length == 2) {
-//                fruit.name = date[0];
-//                fruit.color = date[1];
-//                fruits.add(fruit);
-//            }
-//        }
-//        br.close();
-//        return fruits;
-//    }
-
-    //print file
-//    public static void print(List<String> fileList){
-//        for (String i: fileList) {
-//            System.out.println(i);
-//        }
-//    }
-    //print console
-
 
     public String getName() {
         return name;
